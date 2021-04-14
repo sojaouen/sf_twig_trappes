@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{#definition d'une variable dans une vue TWIG #}
+{% set controller_name = "Declaration d'une variable" %}
+{% set title = "Titre de ma page" %}
+
+{# La fonction parent() reprend le contenu du block parent #}
+{% block title %}{{ title}} - {{ parent() }}{% endblock %}
+
+{% block body %}
+<h1>{{ title }}</h1>
+
+<h2>DataBinding</h2>
+{{ variable_pour_twig}}
+
+<h2>Structure conditionnelle if</h2>
+{% if color == "red" %}
+la couleur est rouge
+{% endif %}
+
+<h2>Structure conditionnelle if-else</h2>
+{% if color == "green" %}
+    C'est vert !
+{% else %}
+    Ce n'est pas vert.
+{% endif %}
+
+<h2>Boucle de 0 à 10</h2>
+{% for i in 0..10 %}
+    i vaut {{ i }} <br>
+{% endfor %}
+
+
+<h2>Boucle sur tableau</h2>
+{% for fruit in fruits %}
+    - {{ fruit }} <br>
+{% endfor %}
+
+
+<hr>
+
+{% for user in users %}
+    {{ user.firstname }} <br>
+{% endfor %}
+
+
+<h2>Inclusion (include)</h2>
+
+{% include "components/alert.html.twig" %} 
+
+<h2>Inclusion avec variable (include ... with)</h2>
+<p>On limite les propriétés avec le mot clé "only"</p>
+{% include "components/alert-alt.html.twig" with {
+    type: "danger",
+    message:"Votre action a échoué",
+    title: title,
+} only %}
+
+<h2>Embeded</h2>
+
+{% embed "components/card.html.twig" %}
+    {% block header %}
+        Entête de card personnalisé
+    {% endblock %}
+    {% block body %}
+        BODY de card personnalisé
+    {% endblock %}
+    {% block footer %}
+        Footer de card personnalisé
+    {% endblock %}
+{% endembed %}
+
+{% endblock %}
