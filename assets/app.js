@@ -6,6 +6,8 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import './styles/app.css';
 import './styles/custom.css';
 
@@ -13,4 +15,17 @@ import './styles/custom.css';
 // import './bootstrap';
 
 // Add Javascript
-import './controllers/prompt';
+// import './controllers/prompt';
+// import {Prompt} from './controllers/prompt-alt';
+
+// var prompt = new Prompt;
+//     prompt.question();
+
+// Import de jQuery
+import 'jquery';
+
+// Import de Popper.js
+import 'popper.js';
+
+// Import de Bootstrap js
+import 'bootstrap';
